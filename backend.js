@@ -1,7 +1,7 @@
 document.getElementById('converterForm').addEventListener('submit', function (event) {
     event.preventDefault(); // Prevent the form from submitting
 
-    // Get the form values
+    // Form values
     const fromCurrency = document.getElementById('fromCurrency').value;
     const toCurrency = document.getElementById('toCurrency').value;
     const amount = document.getElementById('amount').value;
@@ -12,11 +12,11 @@ document.getElementById('converterForm').addEventListener('submit', function (ev
         return;
     }
 
-    // Define the API endpoint and your API key
     const apiKey = '2c741f14db110e36c3c1088f'; //  API key
     const apiUrl = `https://v6.exchangerate-api.com/v6/2c741f14db110e36c3c1088f/latest/USD`;
+    // api url
 
-    // Fetch the exchange rate data
+    // Exchange rate data
     fetch(apiUrl)
         .then(response => response.json())
         .then(data => {
@@ -27,6 +27,9 @@ document.getElementById('converterForm').addEventListener('submit', function (ev
                 // Display the converted amount
                 document.getElementById('result').textContent = 
                     `${amount} ${fromCurrency} = ${convertedAmount} ${toCurrency}`;
+
+                // Show the result div
+                document.getElementById('result').classList.remove('hidden');
             } else {
                 alert("Failed to retrieve exchange rate. Please try again.");
             }
@@ -35,6 +38,5 @@ document.getElementById('converterForm').addEventListener('submit', function (ev
             console.error('Error fetching exchange rate:', error);
             alert("Error fetching exchange rate. Please check your network connection or try again later.");
         });
-
-        
 });
+

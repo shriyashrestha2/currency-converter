@@ -87,6 +87,10 @@ button:hover {
     left: 67.3%; /* Center the box horizontally */
     transform: translateX(-50%); /* Adjust position to truly center it */
 }
+.hidden {
+    display: none;
+}
+
 
 
 
